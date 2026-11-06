@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang="tr">
+<head>
+<meta charset="utf-8">
+<title>Sezle düellosu</title>
+<meta property="og:title" content="Sezle düellosu ⚔️">
+<meta property="og:description" content="Arkadaşın sana meydan okuyor. Aynı 5 algı testini oyna, skorunu geç!">
+<meta property="og:image" content="https://sezle.vercel.app/img/icon.png">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#15122B">
+<link rel="icon" href="/favicon.png">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fredoka:wght@600;700&family=Nunito:wght@600;700;800&display=swap">
+<link rel="stylesheet" href="/style.css">
+</head>
+<body>
+<div class="wrap"><nav><a class="brand" href="/"><svg class="logo" viewBox="0 0 40 40"><defs><linearGradient id="lg" x1="0" x2="1"><stop offset="0" stop-color="#FF6B5B"/><stop offset="1" stop-color="#FF4F9A"/></linearGradient></defs><circle cx="20" cy="20" r="15.6" fill="none" stroke="url(#lg)" stroke-width="4"/><circle cx="20" cy="20" r="6" fill="#3EE6A6"/><circle cx="31" cy="9" r="3.4" fill="#FFC94A"/></svg><span>sez<span class="le">le</span></span></a></nav></div>
+<main class="page">
+  <div class="card">
+    <div style="font-size:56px">⚔️</div>
+    <h1>Sana meydan okundu!</h1>
+    <p>Arkadaşın Sezle'de aynı 5 algı testini oynadı. Uygulamada aç, testleri çöz ve skorunu geç.</p>
+    <div class="cta" style="justify-content:center;margin-top:22px">
+      <a class="store primary" id="open" href="#"><span><small>SEZLE KURULUYSA</small><b>Uygulamada aç</b></span></a>
+      <a class="store" href="https://play.google.com/store/apps/details?id=com.sezle.app"><span><small>İNDİR</small><b>Google Play</b></span></a>
+      <a class="store" href="#"><span><small>YAKINDA</small><b>App Store</b></span></a>
+    </div>
+    <p style="font-size:13px;margin-top:22px;word-break:break-all;opacity:.7">Bağlantı açılmazsa uygulamada Düello'ya bu kodu yapıştır:<br><code id="code"></code></p>
+  </div>
+</main>
+<script>
+  // https://sezle.app/d/SZ1-xxxx → sezle://d/SZ1-xxxx (Universal/App Links open the app
+  // directly when installed; this page is the fallback).
+  var code = location.pathname.split('/d/')[1] || location.hash.slice(1);
+  var deep = 'sezle://d/' + code;
+  document.getElementById('open').href = deep;
+  document.getElementById('code').textContent = code;
+  if (code) setTimeout(function () { location.href = deep; }, 300);
+</script>
+</body>
+</html>

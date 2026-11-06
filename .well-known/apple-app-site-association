@@ -1,0 +1,5 @@
+{
+  "applinks": {
+    "details": [{ "appIDs": ["<TEAM_ID>.com.sezle.app"], "components": [{ "/": "/d/*" }] }]
+  }
+}
