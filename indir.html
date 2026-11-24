@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="tr">
+<head>
+<meta charset="utf-8">
+<title>Sezle'yi indir</title>
+<meta property="og:title" content="Sezle: Günlük Algı Oyunu">
+<meta property="og:description" content="Her gün 5 mini algı testi, tek skor. Google Play'den ücretsiz indir.">
+<meta property="og:image" content="https://sezle.vercel.app/img/icon.png">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#15122B">
+<link rel="icon" href="/favicon.png">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fredoka:wght@600;700&family=Nunito:wght@600;700;800&display=swap">
+<link rel="stylesheet" href="/style.css">
+</head>
+<body>
+<div class="wrap"><nav><a class="brand" href="/"><svg class="logo" viewBox="0 0 40 40"><defs><linearGradient id="lg" x1="0" x2="1"><stop offset="0" stop-color="#FF6B5B"/><stop offset="1" stop-color="#FF4F9A"/></linearGradient></defs><circle cx="20" cy="20" r="15.6" fill="none" stroke="url(#lg)" stroke-width="4"/><circle cx="20" cy="20" r="6" fill="#3EE6A6"/><circle cx="31" cy="9" r="3.4" fill="#FFC94A"/></svg><span>sez<span class="le">le</span></span></a></nav></div>
+<main class="page">
+  <div class="card">
+    <img src="/img/icon.png" alt="" width="72" height="72" style="border-radius:18px">
+    <h1>Sezle'yi indir</h1>
+    <p>Her gün 5 mini algı testi, tek skor.</p>
+    <div class="cta" style="justify-content:center;margin-top:22px">
+      <a class="store primary" id="play" href="https://play.google.com/store/apps/details?id=com.sezle.app"><span><small>ÜCRETSİZ İNDİR</small><b>Google Play</b></span></a>
+      <a class="store" href="#" aria-disabled="true"><span><small>YAKINDA</small><b>App Store</b></span></a>
+    </div>
+    <p id="hint" style="font-size:13px;margin-top:22px;opacity:.7;display:none">Play Store açılmazsa sağ üstteki <b>⋮</b> menüsünden <b>Tarayıcıda aç</b>'ı seçip tekrar dokun.</p>
+  </div>
+</main>
+<script>
+  // Instagram/Facebook in-app browsers show play.google.com as a web page instead of
+  // opening the Play Store app. On Android, an intent:// link hands off to the Play Store
+  // app; browser_fallback_url covers devices without it.
+  (function () {
+    var ua = navigator.userAgent || '';
+    if (!/Android/i.test(ua)) return;
+    var src = new URLSearchParams(location.search).get('k') || (/Instagram/i.test(ua) ? 'instagram' : 'web');
+    var ref = encodeURIComponent('utm_source=' + src + '&utm_medium=indir');
+    var web = 'https://play.google.com/store/apps/details?id=com.sezle.app&referrer=' + ref;
+    var intent = 'intent://details?id=com.sezle.app&referrer=' + ref +
+      '#Intent;scheme=market;package=com.android.vending;S.browser_fallback_url=' +
+      encodeURIComponent(web) + ';end';
+    var a = document.getElementById('play');
+    a.href = intent;
+    if (/Instagram|FBAN|FBAV/i.test(ua)) document.getElementById('hint').style.display = 'block';
+    setTimeout(function () { location.href = intent; }, 250);
+  })();
+</script>
+</body>
+</html>
